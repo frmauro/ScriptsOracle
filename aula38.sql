@@ -1,0 +1,59 @@
+-- CAPITULO 14
+
+-- BLOCO ANONIMO
+DECLARE
+ VDESCONTO NUMBER(6, 2) := 0.50;
+ VCIDADE VARCHAR(30) := 'NOVO HAMBURGO';
+ VCOD_ALUNO TALUNO.COD_ALUNO%TYPE := 5;
+ VTOTAL NUMBER(8, 2) := 1345.89;
+BEGIN
+   VTOTAL := Round(VTOTAL * VDESCONTO, 2);
+   Dbms_Output.Put_Line('Total: ' || VTOTAL);
+   VDESCONTO := 1.20;
+   VCIDADE := InitCap(VCIDADE);
+   Dbms_Output.Put_Line('Cidade: ' || VCIDADE);
+   Dbms_Output.Put_Line('Desconto: ' || VDESCONTO);
+   Dbms_Output.Put_Line('Aluno: ' || VCOD_ALUNO);
+END;
+
+DECLARE
+  VPRECO1 NUMBER(8, 2) := 10;
+  VPRECO2 NUMBER(8, 2) := 20;
+  VFLAG BOOLEAN; -- TRUE or FALSE
+BEGIN
+   VFLAG := (VPRECO1 > VPRECO2);
+
+   IF (VFLAG=TRUE) THEN
+      Dbms_Output.Put_Line('VERDADEIRO');
+     ELSE
+      Dbms_Output.Put_Line('FALSE');
+   END IF;
+
+   IF (VPRECO1 > VPRECO2) THEN
+      Dbms_Output.Put_Line('VPRECO1 É MAIOR');
+     ELSE
+      Dbms_Output.Put_Line('VPRECO2 É MAIOR');
+   END IF;
+END;
+
+
+-- BIND VARIABLE
+VARIABLE VDESCONTO2 NUMBER
+
+DECLARE
+   VCOD_ALUNO NUMBER := 1;
+BEGIN
+    :VDESCONTO2 := 0.90;
+    Dbms_Output.Put_Line('DESCONTO 2: '||:VDESCONTO2);
+
+    UPDATE TCONTRATO SET
+    TOTAL = TOTAL * :VDESCONTO2
+    WHERE COD_ALUNO = VCOD_ALUNO;
+END;
+
+SELECT * FROM TCONTRATO
+WHERE TOTAL > 1000;
+
+
+
+

@@ -1,0 +1,16 @@
+DECLARE
+ VVALOR NUMBER(8, 2);
+ VNOME VARCHAR2(30);
+BEGIN
+
+    SELECT VALOR, NOME
+    INTO VVALOR, VNOME
+    FROM TCURSO
+    WHERE COD_CURSO = &COD_CURSO;
+     Dbms_Output.Put_Line('VALOR: ' || To_Char(VVALOR, 'fm9999.99'));
+
+     Dbms_Output.Put_Line('CURSO: ' || InitCap(VNOME));
+END;
+
+SELECT * FROM TCURSO;
+

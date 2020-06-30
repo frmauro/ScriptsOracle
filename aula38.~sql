@@ -1,0 +1,21 @@
+-- CAPITULO 14
+
+-- BLOCO ANONIMO
+DECLARE
+ VDESCONTO NUMBER(6, 2) := 0.50;
+ VCIDADE VARCHAR(30) := 'NOVO HAMBURGO';
+ VCOD_ALUNO TALUNO.COD_ALUNO%TYPE := 5;
+ VTOTAL NUMBER(8, 2) := 1345.89;
+BEGIN
+   VTOTAL := Round(VTOTAL * VDESCONTO, 2);
+   Dbms_Output.Put_Line('Total: ' || VTOTAL);
+   VDESCONTO := 1.20;
+   VCIDADE := InitCap(VCIDADE);
+   Dbms_Output.Put_Line('Cidade: ' || VCIDADE);
+   Dbms_Output.Put_Line('Desconto: ' || VDESCONTO);
+   Dbms_Output.Put_Line('Aluno: ' || VCOD_ALUNO);
+
+END;
+
+
+
