@@ -55,7 +55,6 @@ BEGIN
   nome_vetor.extend;
   nome_vetor(1) := 'Marcio';
   Dbms_Output.Put_Line(nome_vetor(1));
-
 END;
 
 
