@@ -1,0 +1,19 @@
+DECLARE
+  vCod taluno.cod_aluno%TYPE := 566;
+  vCidade tAluno.cidade%TYPE;
+  x NUMBER;
+BEGIN
+
+  SELECT cidade INTO vCidade
+  FROM talino
+  WHERE cod_aluno = vCod;
+  x := 0 / 0;
+  Dbms_Output.Put_Line('Cidade: ' || vCidade);
+EXCEPTION
+  WHEN No_Data_Found THEN
+   Raise_Application_Error(-20001, 'Aluno inexistente! '|| SQLCODE ||SQLERRM);
+  WHEN too_many_rows THEN
+   Raise_Application_Error(-20002, 'Registro duplicado! '|| SQLCODE ||SQLERRM);
+  WHEN others THEN
+   Raise_Application_Error(-20003, 'Exceção desconhecida! '|| SQLCODE ||SQLERRM);
+END;

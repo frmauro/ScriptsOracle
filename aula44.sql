@@ -85,12 +85,13 @@ BEGIN
   FOR Reg_aluno IN c1
   LOOP
     UPDATE taluno
-     SET nome = InitCap(reg_aluno.nome)
+     SET nome = InitCap(Reg_aluno.nome)
      WHERE CURRENT OF c1;
-     Dbms_Output.Put_Line('Nome: ' || Reg_aluno.nome);
+     Dbms_Output.Put_Line('Nome: ' || InitCap(Reg_aluno.nome));
   END LOOP;
   COMMIT;
 
 END;
+
 
 
