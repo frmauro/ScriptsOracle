@@ -1,0 +1,17 @@
+DECLARE
+    HORA VARCHAR2(2);
+    H NUMBER;
+  BEGIN
+    H := To_Number(To_Char(SYSDATE, 'HH24'));
+    Dbms_Output.Put_Line(H||'   '||To_Char(SYSDATE+2, 'DAY'));
+  END;
+
+  BEGIN
+    IF (To_Char(SYSDATE, 'DAY') IN ('SABADO', 'DOMINGO') OR
+        To_Number(To_Char(SYSDATE, 'HH24'))  NOT BETWEEN 8 AND 18) THEN
+        Raise_Application_Error(-20001,'Fora do horario comercial');
+    END IF;
+  END;
+
+END;
+
